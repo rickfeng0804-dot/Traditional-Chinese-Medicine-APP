@@ -1,0 +1,6 @@
+{
+  "name": "岐黃學舟 · 中醫五大核心學科修煉",
+  "description": "專為中醫愛好者與入門學者打造的中醫基本知識養成平台。涵蓋中醫基礎理論、中醫診斷學、中藥學、方劑學、針灸學五大核心學科，提供陰陽五行、四診辨證、四氣五味、君臣佐使與經絡穴位全維度深度學習與互動實踐。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
