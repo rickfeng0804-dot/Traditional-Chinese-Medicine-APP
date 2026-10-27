@@ -15,8 +15,10 @@ import {
   HelpCircle, 
   ArrowRight,
   ShieldCheck,
-  CheckCircle2
+  CheckCircle2,
+  Workflow
 } from 'lucide-react';
+import { ZangFuDiagram } from './ZangFuDiagram';
 
 interface BasicTheoryViewProps {
   onMarkLearned: () => void;
@@ -29,7 +31,7 @@ export const BasicTheoryView: React.FC<BasicTheoryViewProps> = ({
   isLearned,
   onOpenNoteForTopic
 }) => {
-  const [activeTab, setActiveTab] = useState<'wuxing' | 'zangfu' | 'qixue'>('wuxing');
+  const [activeTab, setActiveTab] = useState<'wuxing' | 'zangfu' | 'zangfu-diagram' | 'qixue'>('wuxing');
   const [selectedElement, setSelectedElement] = useState<FiveElement>('wood');
   const [selectedOrganId, setSelectedOrganId] = useState<string>('heart');
   const [yinYangBalance, setYinYangBalance] = useState<number>(50); // 0 = 陰盛/陽衰, 50 = 平衡, 100 = 陽盛/陰衰
@@ -145,6 +147,17 @@ export const BasicTheoryView: React.FC<BasicTheoryViewProps> = ({
         >
           <Activity className="w-4 h-4 text-rose-700" />
           <span>五臟六腑藏象</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('zangfu-diagram')}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+            activeTab === 'zangfu-diagram'
+              ? 'bg-white text-stone-900 shadow-xs font-semibold ring-1 ring-amber-800/20'
+              : 'text-stone-600 hover:text-stone-900'
+          }`}
+        >
+          <Workflow className="w-4 h-4 text-amber-800" />
+          <span>藏象關聯圖解</span>
         </button>
         <button
           onClick={() => setActiveTab('qixue')}
@@ -455,8 +468,32 @@ export const BasicTheoryView: React.FC<BasicTheoryViewProps> = ({
                 ))}
               </div>
             </div>
+
+            {/* Quick jump to Zang-Fu Interconnection Diagram */}
+            <div className="p-4 bg-gradient-to-r from-amber-50 to-stone-100 rounded-xl border border-amber-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <span className="font-serif-tc font-bold text-stone-900 text-sm block">
+                  五臟六腑並非孤立存在，想探究彼此間的經絡表裡與生剋協同？
+                </span>
+                <p className="text-xs text-stone-600 mt-0.5">
+                  深入研習六對臟腑表裡相合、十組五臟生克互濟與六腑水穀傳化流向全景。
+                </p>
+              </div>
+              <button
+                onClick={() => setActiveTab('zangfu-diagram')}
+                className="flex items-center gap-1.5 px-4 py-2 bg-stone-900 text-white rounded-lg text-xs font-medium hover:bg-stone-800 transition-colors whitespace-nowrap shrink-0 shadow-2xs"
+              >
+                <span>探索藏象關聯圖解</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
+      )}
+
+      {/* TAB: 藏象學說（五臟六腑的關聯圖解） */}
+      {activeTab === 'zangfu-diagram' && (
+        <ZangFuDiagram onOpenNoteForTopic={onOpenNoteForTopic} />
       )}
 
       {/* TAB 3: 氣血津液理論 */}

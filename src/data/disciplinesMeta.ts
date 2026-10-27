@@ -13,6 +13,7 @@ export const DISCIPLINES: DisciplineMeta[] = [
     topics: [
       { id: 'yinyang-wuxing', title: '陰陽五行學說', desc: '天人相應、相生相剋、五行歸類推演' },
       { id: 'zangfu', title: '臟腑藏象學說', desc: '五臟六腑官職、生理功能與表裡關聯' },
+      { id: 'zangfu-diagram', title: '臟腑關聯圖解', desc: '五臟生克互濟、表裡相合與六腑傳化' },
       { id: 'qixuejinye', title: '氣血津液理論', desc: '元宗營衛之氣、血行津化與生克互根' }
     ]
   },
